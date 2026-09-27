@@ -110,6 +110,8 @@ main section{padding-block:80px}
 @media (max-width:720px){.agents{grid-template-columns:1fr}}
 .agent{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:26px;display:flex;flex-direction:column;gap:14px}
 .agent h3{font-weight:700;font-size:21px;line-height:1.2}
+.agent-top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 12px}
+.live{font:500 10.5px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--accent);background:var(--accent-soft);border-radius:3px;padding:6px 8px}
 .agent p{color:var(--muted);font-size:16px}
 .io{display:grid;grid-template-columns:auto 1fr;gap:8px 16px;margin:4px 0 0;padding-top:14px;border-top:1px solid var(--line);font-size:14.5px}
 .io dt{font:500 11px/1.9 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
@@ -238,7 +240,7 @@ body:has(dialog[open]){overflow:hidden}
       <div class="hero-copy">
         <span class="label">AI agent automation</span>
         <h1>Agents do the legwork. <span>You make the calls.</span></h1>
-        <p class="lede">I design and build AI agents for small businesses and B2B teams. They handle the searching, sorting and first drafts that fill your week, on a schedule, on your own accounts.</p>
+        <p class="lede">I design and build AI agents for small businesses and B2B teams. They handle the searching, sorting and first drafts that take up your week. They run on a schedule, on your own accounts.</p>
         <div class="cta">
           <a class="btn" href="mailto:rich.vilar@vilarconsulting.net">Email Rich</a>
           <a class="phone" href="tel:+19496252627">949-625-2627</a>
@@ -257,7 +259,7 @@ body:has(dialog[open]){overflow:hidden}
           <div class="row"><b>2016 Honda Pilot EX-L</b><span class="price">$17,450</span><span class="meta">88,150 mi · Private seller · 12 mi</span><span class="vin">VIN <i>5FNYF6H5</i>•••••</span></div>
           <div class="row"><b>2018 Ford F-150 XLT</b><span class="price">$21,800</span><span class="meta">102,300 mi · Dealer · 54 mi away</span><span class="vin">VIN <i>1FTEW1EP</i>•••••</span></div>
         </div>
-        <p class="out-note">A used-car buyer's daily shortlist. The agent reads every new listing overnight and sends only the ones that match his rules. Sample listings.</p>
+        <p class="out-note">A used-car buyer's daily shortlist. The agent reads every new listing overnight and sends only the ones that match the buyer's rules. Sample listings.</p>
         <button type="button" class="flow-btn" data-flow="car">See how this agent works <span aria-hidden="true">→</span></button>
       </div>
     </div>
@@ -268,31 +270,43 @@ body:has(dialog[open]){overflow:hidden}
       <div class="sec-head">
         <span class="label">What an agent can take on</span>
         <h2>Repetitive work with clear rules</h2>
-        <p>If you can explain how you decide, an agent can do the first pass. These are the kinds of jobs I build for.</p>
+        <p>If you can explain how you decide, an agent can do the first pass. These are the kinds of agents I build.</p>
       </div>
       <div class="agents">
         <article class="agent">
-          <h3>Daily finder</h3>
-          <p>Watches listings, leads or postings, keeps only what fits your rules, and skips anything it has already shown you.</p>
+          <div class="agent-top"><h3>Chief of staff</h3><span class="live">Running today</span></div>
+          <p>Starts each day with a one-page brief: today's meetings, overdue items, and who owes you what. It tracks commitments from each meeting and drafts replies for your approval. I use one for my own work every day.</p>
+          <dl class="io"><dt>Runs</dt><dd>Every morning</dd><dt>You get</dt><dd>A one-page brief and draft replies</dd></dl>
+          <button type="button" class="flow-btn" data-flow="cos">See the workflow <span aria-hidden="true">→</span></button>
+        </article>
+        <article class="agent">
+          <div class="agent-top"><h3>Job search agent</h3><span class="live">Running today</span></div>
+          <p>Reviews new job postings, scores each one against your resume, and highlights the gaps. When you choose a role, it drafts a tailored resume for your review. You submit every application yourself.</p>
+          <dl class="io"><dt>Runs</dt><dd>Three mornings a week</dd><dt>You get</dt><dd>A shortlist with fit scores</dd></dl>
+          <button type="button" class="flow-btn" data-flow="job">See the workflow <span aria-hidden="true">→</span></button>
+        </article>
+        <article class="agent">
+          <div class="agent-top"><h3>Daily finder</h3></div>
+          <p>Monitors new listings or leads, keeps only what fits your rules, and never shows you the same item twice.</p>
           <dl class="io"><dt>Runs</dt><dd>Every morning</dd><dt>You get</dt><dd>A short email with links</dd></dl>
           <button type="button" class="flow-btn" data-flow="finder">See the workflow <span aria-hidden="true">→</span></button>
         </article>
         <article class="agent">
-          <h3>Inbox and document triage</h3>
-          <p>Reads what comes in, labels and files it, and pulls the key fields from invoices, forms and PDFs into a sheet.</p>
-          <dl class="io"><dt>Runs</dt><dd>When mail or a file arrives</dd><dt>You get</dt><dd>A sorted inbox and a clean sheet</dd></dl>
+          <div class="agent-top"><h3>Inbox and document triage</h3></div>
+          <p>Reads incoming email and files, labels and files them, and copies the key details from invoices, forms and PDFs into a spreadsheet.</p>
+          <dl class="io"><dt>Runs</dt><dd>When an email or file arrives</dd><dt>You get</dt><dd>A sorted inbox and a clean spreadsheet</dd></dl>
           <button type="button" class="flow-btn" data-flow="triage">See the workflow <span aria-hidden="true">→</span></button>
         </article>
         <article class="agent">
-          <h3>Product catalog cleanup</h3>
-          <p>Checks supplier product files for missing specs, duplicates and odd prices before they reach your store or catalog. Built on six years running a manufacturer catalog platform.</p>
-          <dl class="io"><dt>Runs</dt><dd>When a supplier file lands</dd><dt>You get</dt><dd>A clean file and a short list to review</dd></dl>
+          <div class="agent-top"><h3>Product catalog cleanup</h3></div>
+          <p>Checks supplier product files for missing specs, duplicates and unusual prices before they reach your store or catalog. Draws on six years running a manufacturer product catalog platform.</p>
+          <dl class="io"><dt>Runs</dt><dd>When a supplier file arrives</dd><dt>You get</dt><dd>A clean file and a short list to review</dd></dl>
           <button type="button" class="flow-btn" data-flow="catalog">See the workflow <span aria-hidden="true">→</span></button>
         </article>
         <article class="agent">
-          <h3>Quote builder</h3>
-          <p>Takes a customer's request, checks price and stock across your distributors, and drafts the quote for you to send. Built on work on real-time pricing links to 20+ IT distributors.</p>
-          <dl class="io"><dt>Runs</dt><dd>When a quote request comes in</dd><dt>You get</dt><dd>A draft quote with the best source per line</dd></dl>
+          <div class="agent-top"><h3>Quote builder</h3></div>
+          <p>Takes a customer's request, checks price and stock across your distributors, and drafts a quote for you to review and send. Draws on my experience building real-time pricing links to 20+ IT distributors.</p>
+          <dl class="io"><dt>Runs</dt><dd>When a quote request comes in</dd><dt>You get</dt><dd>A draft quote with the best supplier for each line item</dd></dl>
           <button type="button" class="flow-btn" data-flow="quote">See the workflow <span aria-hidden="true">→</span></button>
         </article>
       </div>
@@ -307,14 +321,14 @@ body:has(dialog[open]){overflow:hidden}
       </div>
       <ol class="steps">
         <li><h3>Rules session</h3><p>About an hour. You walk me through how you decide today, using real examples.</p></li>
-        <li><h3>First version</h3><p>I build it and set it running on your accounts, with a log you can check.</p></li>
-        <li><h3>Two weeks of tuning</h3><p>You read what it produces and tell me what's wrong. I fix it.</p></li>
-        <li><h3>After that</h3><p>Changes when you need them, billed by the hour.</p></li>
+        <li><h3>First version</h3><p>I build the agent and run it on your own accounts, with an activity log you can review.</p></li>
+        <li><h3>Two weeks of tuning</h3><p>You review what it produces and tell me what needs to change. I adjust it until it's right.</p></li>
+        <li><h3>Ongoing support</h3><p>Changes as your needs evolve, billed hourly.</p></li>
       </ol>
       <div class="terms">
         <div><strong>You own it</strong><span>The code, the data and the settings are yours, on your accounts.</span></div>
-        <div><strong>No scraping</strong><span>Licensed data and official connectors only. Nothing that breaks a site's terms.</span></div>
-        <div><strong>Fixed price to start</strong><span>Setup and the first version are quoted after the rules session.</span></div>
+        <div><strong>Licensed data only</strong><span>Data comes from licensed sources and official connections, never from copying websites.</span></div>
+        <div><strong>Fixed price to start</strong><span>After the rules session, you get a fixed quote for setup and the first version.</span></div>
       </div>
     </div>
   </section>
@@ -327,8 +341,8 @@ body:has(dialog[open]){overflow:hidden}
         <p>Principal, Vilar Consulting. San Clemente, California.</p>
       </div>
       <div class="body">
-        <p>I have 18 years in B2B software, most of them as a product manager. At Supplyframe, part of Siemens, I owned the BOM and RFQ modules of its supply-chain platform. Before that I spent 13 years at CBS Interactive, where I ran a product-information platform that held 12 million manufacturer products across 30 markets at its peak, and worked on a B2B ecommerce product.</p>
-        <p>Product work is mostly figuring out how people really make decisions. That's the same question an agent needs answered before it can take work off your plate.</p>
+        <p>I have 18 years in B2B software, most of them as a product manager. At Supplyframe, part of Siemens, I owned the bill-of-materials and quote-request (RFQ) tools in its supply-chain platform. Before that I spent 13 years at CBS Interactive, where I ran a product-information platform that held 12 million manufacturer products across 30 markets at its peak, and worked on a B2B ecommerce product.</p>
+        <p>Most product work comes down to understanding how people actually make decisions. An agent needs that same understanding before it can take work off your plate.</p>
         <dl class="facts">
           <dt>Focus</dt><dd>AI agents for small businesses and B2B teams</dd>
           <dt>Background</dt><dd>B2B SaaS product management, supply chain</dd>
@@ -344,7 +358,7 @@ body:has(dialog[open]){overflow:hidden}
   <div class="wrap">
     <div>
       <h2>What would you hand off first?</h2>
-      <p>Send a note about the work you want off your plate. I'll tell you whether an agent can do it.</p>
+      <p>Describe a task you'd like to automate, and I'll let you know whether an agent is a good fit.</p>
     </div>
     <div class="reach">
       <a href="mailto:rich.vilar@vilarconsulting.net">rich.vilar@vilarconsulting.net</a>
@@ -376,10 +390,38 @@ body:has(dialog[open]){overflow:hidden}
 <script>
 (() => {
   // One entry per clickable card. Words only: no vendor names, rule values or prices (Rich, 2026-09-26).
+  const FB = ["Your feedback","refines the rules"];
   const FLOWS = {
+    cos: {
+      n:1, kicker:"How it works",
+      title:"Chief of staff", sub:"Your day on one page. Nothing is sent without you.",
+      trigger:["Schedule",["Every morning"],"clock"],
+      source:["Calendar and Email",["Read-only access"],"mail"],
+      rules:["Your Priorities",["Key people, what","counts as urgent"],"sliders"],
+      agent:["Chief of Staff",["Reads your day, finds","what needs you"]],
+      memory:["Commitments",["Who owes what,","by when"],"table"],
+      output:["Morning Brief",["Meetings, overdue items,","what you are owed"],"doc"],
+      flag:["Draft Replies",["Held for your","approval"],"pause"],
+      you:["You",["Approve, edit,","send"],"person"],
+      a:{start:"Starts the run",feed:"Today's items",rules:"Priorities",save:"Save",check:"Check",out:"Brief",flag:"Replies",deliver:"Reads it",flagDeliver:"Approve",fb:FB},
+      tiles:[["Ready by 6 am","Your day on one page before it starts."],["Nothing slips","Commitments are tracked until they are closed."],["Nothing is sent without you","Replies stay drafts until you approve them."],["Meeting prep on request","Who you are meeting, past conversations, open items."]],
+    },
+    job: {
+      n:2, kicker:"How it works",
+      title:"Job search agent", sub:"It reads every new posting. You apply only to the best fits.",
+      trigger:["Schedule",["Three mornings","a week"],"clock"],
+      source:["Job Boards",["New postings for","your target roles"],"search"],
+      rules:["Your Resume",["Experience, target","roles, must-haves"],"file"],
+      agent:["Job Search Agent",["Scores each posting","against your resume"]],
+      memory:["Pipeline",["Every role seen","and its stage"],"table"],
+      output:["Shortlist",["Top fits, with","the gaps named"],"check"],
+      you:["You",["Pick the roles,","apply yourself"],"person"],
+      a:{start:"Starts the run",feed:"New postings",rules:"Profile",save:"Save",check:"Check",out:"Top fits",deliver:"Reads it",fb:FB},
+      tiles:[["Every posting read","Nothing new slips past."],["Scored against your resume","Each fit comes with the gaps named."],["You apply, not the agent","Every application is yours to submit."],["Tailored drafts on request","Choose a role and it drafts a resume for your review."]],
+    },
     car: {
-      n:1, kicker:"Daily finder, real example",
-      title:"Used-Car Shortlist", sub:"The agent does the searching. The buyer does the pricing.",
+      n:3, kicker:"Example: daily finder",
+      title:"Used-car shortlist", sub:"The agent does the searching. The buyer does the pricing.",
       trigger:["Schedule",["Every morning"],"clock"],
       source:["Listings Feed",["Licensed dealer and","private listings"],"search"],
       rules:["Buyer's Rules",["Make, years, miles,","distance, price"],"sliders"],
@@ -387,63 +429,63 @@ body:has(dialog[open]){overflow:hidden}
       memory:["Spreadsheet",["Every car checked,","no repeats"],"table"],
       output:["Morning Email",["Cars that fit, with","VIN and link"],"mail"],
       you:["The Buyer",["Opens each link,","makes the call"],"person"],
-      a:{start:"Starts the run",feed:"New listings",rules:"Filters",save:"Save",check:"Seen?",out:"Cars that fit",deliver:"Reads it",fb:["Tunes the","rules weekly"]},
-      tiles:[["Search done by 6 am","The overnight search is already finished."],["Never the same car twice","The spreadsheet remembers every listing."],["The buyer decides","The agent sends a list. It never contacts a seller."],["Rules get sharper","Feedback tunes the filter."]],
+      a:{start:"Starts the run",feed:"New listings",rules:"Filters",save:"Save",check:"Check",out:"Cars that fit",deliver:"Reads it",fb:FB},
+      tiles:[["Ready by 6 am","The overnight search is already done."],["Never the same car twice","The spreadsheet records every listing."],["The buyer decides","The agent sends a list. It never contacts a seller."],["Rules get sharper","Feedback refines the filter over time."]],
     },
     finder: {
-      n:1, kicker:"How it works",
-      title:"Daily Finder", sub:"It reads everything new. You only see what fits.",
+      n:3, kicker:"How it works",
+      title:"Daily finder", sub:"It reads everything new. You see only what fits.",
       trigger:["Schedule",["Every morning"],"clock"],
-      source:["Your Sources",["Listings, leads","or job posts"],"search"],
+      source:["Your Sources",["New listings","or leads"],"search"],
       rules:["Your Rules",["What fits and","what to skip"],"sliders"],
       agent:["Finder Agent",["Checks each new item","against your rules"]],
       memory:["Seen List",["Everything it has","already shown you"],"table"],
       output:["Short Email",["New matches only,","with links"],"mail"],
       you:["You",["Open the links, decide","what to act on"],"person"],
-      a:{start:"Starts the run",feed:"New items",rules:"Filters",save:"Save",check:"Seen?",out:"Matches",deliver:"Reads it",fb:["Tell it what","it got wrong"]},
-      tiles:[["A short list, not a feed","Only matches reach your inbox."],["Nothing shows up twice","The seen list blocks repeats."],["You keep the decision","It shortlists. You choose."],["Better every week","Your feedback sharpens the rules."]],
+      a:{start:"Starts the run",feed:"New items",rules:"Filters",save:"Save",check:"Check",out:"Matches",deliver:"Reads it",fb:FB},
+      tiles:[["A short list, not a feed","Only matches reach your inbox."],["Nothing shows up twice","The seen list prevents repeats."],["You keep the decision","It shortlists. You choose."],["Better every week","Your feedback refines the rules."]],
     },
     triage: {
-      n:2, kicker:"How it works",
-      title:"Inbox and Document Triage", sub:"Every email and file gets sorted. The numbers land in a sheet.",
+      n:4, kicker:"How it works",
+      title:"Inbox and document triage", sub:"Every email and file is sorted, and the key figures go into a spreadsheet.",
       trigger:["New Arrival",["An email or file","comes in"],"bolt"],
       source:["Inbox and Folders",["Invoices, forms","and PDFs"],"inbox"],
-      rules:["Filing Rules",["Labels, folders,","fields to pull"],"sliders"],
-      agent:["Triage Agent",["Reads it, files it,","pulls the key fields"]],
-      memory:["Your Sheet",["One row per","document"],"table"],
+      rules:["Filing Rules",["Labels, folders,","details to copy"],"sliders"],
+      agent:["Triage Agent",["Reads it, files it,","copies the key details"]],
+      memory:["Spreadsheet",["One row per","document"],"table"],
       output:["Sorted Inbox",["Labeled and filed"],"check"],
       flag:["Needs a Look",["Anything it could","not read clearly"],"alert"],
       you:["You",["Check the flagged","items only"],"person"],
-      a:{start:"Triggers it",feed:"New item",rules:"Rules",save:"Add row",check:"Repeat?",out:"Filed",flag:"Unsure",deliver:"Glance",flagDeliver:"You check",fb:["Your fixes update","the rules"]},
-      tiles:[["No retyping","Fields come out of the PDF for you."],["Nothing gets lost","Every file is labeled and logged."],["Unsure goes to you","It flags what it cannot read."],["Rules in plain English","You can read them and change them."]],
+      a:{start:"Starts the run",feed:"New item",rules:"Rules",save:"Add row",check:"Check",out:"Filed",flag:"Unsure",deliver:"Review",flagDeliver:"You check",fb:FB},
+      tiles:[["No retyping","Details are copied from the PDF for you."],["Nothing gets lost","Every file is labeled and logged."],["Unclear items come to you","It flags anything it cannot read."],["Rules in plain English","You can read them and change them."]],
     },
     catalog: {
-      n:3, kicker:"How it works",
-      title:"Product Catalog Cleanup", sub:"Bad supplier data gets caught before customers see it.",
+      n:5, kicker:"How it works",
+      title:"Product catalog cleanup", sub:"Supplier data errors are caught before customers see them.",
       trigger:["Supplier File",["New products","or prices arrive"],"file"],
       source:["Your Catalog",["What is live in","your store today"],"box"],
       rules:["Your Standards",["Required specs,","price ranges, naming"],"sliders"],
       agent:["Catalog Agent",["Checks every row","against your standards"]],
       memory:["Check Log",["Every row checked,","and why"],"table"],
       output:["Clean File",["Rows that passed,","ready to load"],"check"],
-      flag:["Review List",["Missing specs,","duplicates, odd prices"],"alert"],
+      flag:["Review List",["Missing specs, duplicates,","unusual prices"],"alert"],
       you:["You",["Fix the short list,","load the file"],"person"],
-      a:{start:"Starts the check",feed:"Compare",rules:"Standards",save:"Log",check:"History",out:"Passed",flag:"Problems",deliver:"Load it",flagDeliver:"Fix these",fb:["New rules from","your fixes"]},
-      tiles:[["Caught before customers","Bad rows stop at the review list."],["Duplicates found","Matched against what you already carry."],["Fix a list, not a file","You only touch the rows that failed."],["Your standards","Written in plain language, changed anytime."]],
+      a:{start:"Starts the check",feed:"Compare",rules:"Standards",save:"Log",check:"Check",out:"Passed",flag:"Problems",deliver:"Load it",flagDeliver:"Fix these",fb:FB},
+      tiles:[["Caught before customers see it","Problem rows stop at the review list."],["Duplicates found","Matched against what you already carry."],["Fix a list, not a file","You only touch the rows that failed."],["Your standards","Written in plain language, changed anytime."]],
     },
     quote: {
-      n:4, kicker:"How it works",
-      title:"Quote Builder", sub:"The pricing legwork is done. You review and send.",
+      n:6, kicker:"How it works",
+      title:"Quote builder", sub:"The agent prices each line. You review and send.",
       trigger:["Quote Request",["Email or form","from a customer"],"mail"],
       source:["Distributor Feeds",["Price and stock,","official connections"],"truck"],
-      rules:["Pricing Rules",["Markup and","preferred sources"],"sliders"],
-      agent:["Quote Agent",["Checks each line,","picks the best source"]],
+      rules:["Pricing Rules",["Markup and","preferred suppliers"],"sliders"],
+      agent:["Quote Agent",["Checks each line, picks","the best supplier"]],
       memory:["Quote History",["Past quotes and","customer terms"],"db"],
-      output:["Draft Quote",["Best source","per line"],"doc"],
+      output:["Draft Quote",["Best supplier","for each line"],"doc"],
       flag:["Needs a Look",["Out of stock","or no match"],"alert"],
       you:["You",["Review, adjust,","send"],"person"],
-      a:{start:"Starts it",feed:"Price, stock",rules:"Markup",save:"Save",check:"Terms",out:"Draft",flag:"No match",deliver:"Review",flagDeliver:"Decide",fb:["Adjust markup","or sources"]},
-      tiles:[["Every line priced","Price and stock checked per distributor."],["You send, not the agent","Nothing reaches the customer without you."],["Gaps come to you","Out-of-stock lines are flagged."],["Your margin every time","Markup rules apply to each line."]],
+      a:{start:"Starts it",feed:"Price, stock",rules:"Markup",save:"Save",check:"Look up",out:"Draft",flag:"No match",deliver:"Review",flagDeliver:"Decide",fb:FB},
+      tiles:[["Every line priced","Price and stock checked with each distributor."],["You send, not the agent","Nothing reaches the customer without you."],["Gaps come to you","Out-of-stock lines are flagged."],["Your margin every time","Markup rules apply to each line."]],
     },
   };
 
@@ -464,6 +506,7 @@ body:has(dialog[open]){overflow:hidden}
     box:'<path d="M3 7.5L12 3l9 4.5v9L12 21l-9-4.5z"/><path d="M3 7.5L12 12l9-4.5M12 12v9"/>',
     db:'<ellipse cx="12" cy="6" rx="7" ry="2.5"/><path d="M5 6v12c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5V6"/><path d="M5 12c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5"/>',
     truck:'<path d="M3 6h11v10H3z"/><path d="M14 10h4l3 3v3h-7"/><circle cx="7" cy="18" r="1.8" fill="F"/><circle cx="17" cy="18" r="1.8" fill="F"/>',
+    pause:'<circle cx="12" cy="12" r="9"/><path d="M10 9v6M14 9v6"/>',
     bolt:'<path d="M13 3L5 13h6l-1 8 8-10h-6z"/>',
     doc:'<rect x="6" y="3" width="12" height="18" rx="1.5"/><path d="M9 8h6M9 12h6M9 16h3"/>',
     check:'<circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.8 2.8L16.5 9.5"/>',
