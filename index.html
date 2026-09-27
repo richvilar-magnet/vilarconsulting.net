@@ -15,6 +15,8 @@
   --brand:#1A3350; --brand-ink:#FFFFFF; --brand-sub:#B8C4D2; --brand-line:#2E4A6B;
   --accent:#1F6B5A; --accent-soft:#E4F0EC; --mint:#5DBEA2;
   --mark-fg:#1A3350; --mark-ac:#1F6B5A;
+  --wf-blue:#EAF2FD; --wf-blue-b:#BBD3F5; --wf-lav:#ECE8FB; --wf-lav-b:#C4B8F0; --wf-green:#E6F5EC; --wf-green-b:#B5DEC4;
+  --wf-yellow:#FDF3DC; --wf-yellow-b:#F1D79A; --wf-pink:#FCE8E8; --wf-pink-b:#F0B9B9; --wf-ink:#111111; --wf-muted:#6B7280; --wf-arrow:#4B5563;
   --display:"Archivo","Helvetica Neue",Arial,sans-serif;
   --body:"IBM Plex Sans","Segoe UI",system-ui,sans-serif;
   --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
@@ -25,6 +27,8 @@
     --brand:#1B3552; --brand-ink:#F2F5F8; --brand-sub:#A9B6C6; --brand-line:#2E4A6B;
     --accent:#5DBEA2; --accent-soft:#162E28;
     --mark-fg:#E5E9ED; --mark-ac:#5DBEA2;
+    --wf-blue:#15253A; --wf-blue-b:#3B5F8F; --wf-lav:#221E3A; --wf-lav-b:#6A5DB0; --wf-green:#13291F; --wf-green-b:#3C7A58;
+    --wf-yellow:#2C2513; --wf-yellow-b:#8A7236; --wf-pink:#321A1D; --wf-pink-b:#93474F; --wf-ink:#E5E9ED; --wf-muted:#9BA6B2; --wf-arrow:#9BA6B2;
     color-scheme:dark;
   }
 }
@@ -33,6 +37,8 @@
   --brand:#1B3552; --brand-ink:#F2F5F8; --brand-sub:#A9B6C6; --brand-line:#2E4A6B;
   --accent:#5DBEA2; --accent-soft:#162E28;
   --mark-fg:#E5E9ED; --mark-ac:#5DBEA2;
+    --wf-blue:#15253A; --wf-blue-b:#3B5F8F; --wf-lav:#221E3A; --wf-lav-b:#6A5DB0; --wf-green:#13291F; --wf-green-b:#3C7A58;
+    --wf-yellow:#2C2513; --wf-yellow-b:#8A7236; --wf-pink:#321A1D; --wf-pink-b:#93474F; --wf-ink:#E5E9ED; --wf-muted:#9BA6B2; --wf-arrow:#9BA6B2;
   color-scheme:dark;
 }
 *{box-sizing:border-box}
@@ -145,6 +151,55 @@ main section{padding-block:80px}
 .reach span{font:400 14px/1.3 var(--body);color:var(--brand-sub)}
 footer{background:var(--brand);color:var(--brand-sub);border-top:1px solid var(--brand-line)}
 footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;padding-block:20px;font:400 12.5px/1.5 var(--mono)}
+/* workflow diagrams: card click opens a dialog. Style: reference/design/workflow-card-style.md */
+.demo{position:relative}
+.agent{position:relative;transition:border-color .15s}
+.agent:hover{border-color:var(--accent)}
+.flow-btn{align-self:flex-start;margin-top:auto;background:none;border:0;padding:0;font:600 15px/1.4 var(--body);color:var(--accent);cursor:pointer}
+.flow-btn::after{content:"";position:absolute;inset:0;border-radius:8px}
+.flow-btn:focus-visible{outline:none}
+.flow-btn:focus-visible::after{outline:2px solid var(--mint);outline-offset:3px}
+.flow-btn span{display:inline-block;transition:transform .15s}
+.agent:hover .flow-btn span,.demo:hover .flow-btn span{transform:translateX(3px)}
+.demo .flow-btn{color:var(--mint);font-size:14px;margin-top:10px}
+body:has(dialog[open]){overflow:hidden}
+.flow{width:min(760px,calc(100% - 24px));max-height:calc(100% - 24px);padding:0;border:0;border-radius:14px;background:var(--paper);color:var(--wf-ink);box-shadow:0 24px 60px rgba(6,14,24,.35)}
+.flow::backdrop{background:rgba(10,18,28,.62)}
+.flow-in{display:flex;flex-direction:column;gap:22px;padding:28px}
+.flow-head{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:16px;align-items:start}
+.flow-num{width:56px;height:56px;border-radius:12px;background:var(--wf-blue);display:grid;place-items:center;font:800 32px/1 var(--display);font-stretch:112%;color:var(--wf-ink)}
+.flow-head .label{color:var(--wf-muted)}
+.flow-head h2{font-weight:800;font-size:clamp(24px,4vw,32px);line-height:1.1;letter-spacing:-.01em;margin-top:8px}
+.flow-head p{color:var(--wf-muted);margin-top:6px;font-size:16px}
+.flow-x{width:40px;height:40px;border-radius:8px;border:1px solid var(--line);background:none;color:var(--wf-ink);font-size:24px;line-height:1;cursor:pointer}
+.flow-x:hover{background:var(--ground)}
+.flow-x:focus-visible{outline:2px solid var(--mint);outline-offset:2px}
+.wf{width:100%;height:auto;display:block}
+.wf text{font-family:var(--body)}
+.wf .lbl{font-weight:600;font-size:14px;fill:var(--wf-ink)}
+.wf .lbl.big{font-size:17px}
+.wf .dsc{font-size:11px;fill:var(--wf-muted)}
+.wf .arr{font-size:10.5px;fill:var(--wf-muted)}
+.wf .narrow{display:none}
+.flow-tiles{list-style:none;margin:0;padding:0;counter-reset:tile;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.flow-tiles li{counter-increment:tile;display:grid;grid-template-columns:auto minmax(0,1fr);gap:2px 14px;padding:16px;border-radius:12px;background:var(--t)}
+.flow-tiles li::before{content:counter(tile);grid-row:span 2;width:32px;height:32px;border-radius:50%;background:var(--tb);display:grid;place-items:center;font:700 15px/1 var(--body);color:var(--wf-ink)}
+.flow-tiles li:nth-child(1){--t:var(--wf-blue);--tb:var(--wf-blue-b)}
+.flow-tiles li:nth-child(2){--t:var(--wf-green);--tb:var(--wf-green-b)}
+.flow-tiles li:nth-child(3){--t:var(--wf-yellow);--tb:var(--wf-yellow-b)}
+.flow-tiles li:nth-child(4){--t:var(--wf-lav);--tb:var(--wf-lav-b)}
+.flow-tiles strong{font-weight:600}
+.flow-tiles span{color:var(--wf-muted);font-size:14.5px;line-height:1.45}
+@media (max-width:560px){
+  .flow-in{padding:20px 16px;gap:18px}
+  .flow-head{gap:12px}
+  .flow-num{width:44px;height:44px;font-size:24px}
+  .flow-tiles{grid-template-columns:1fr}
+  .wf .wide,.wf .dsc,.wf .arr{display:none}
+  .wf .narrow{display:inline}
+  .wf .lbl{font-size:20px}
+  .wf .lbl.big{font-size:22px}
+}
 </style>
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="canonical" href="https://vilarconsulting.net/">
@@ -189,7 +244,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 2
           <a class="phone" href="tel:+19496252627">949-625-2627</a>
         </div>
       </div>
-      <div>
+      <div class="demo">
         <div class="out" aria-label="Example of an agent's morning email">
           <div class="out-head">
             <div>
@@ -203,6 +258,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 2
           <div class="row"><b>2018 Ford F-150 XLT</b><span class="price">$21,800</span><span class="meta">102,300 mi · Dealer · 54 mi away</span><span class="vin">VIN <i>1FTEW1EP</i>•••••</span></div>
         </div>
         <p class="out-note">A used-car buyer's daily shortlist. The agent reads every new listing overnight and sends only the ones that match his rules. Sample listings.</p>
+        <button type="button" class="flow-btn" data-flow="car">See how this agent works <span aria-hidden="true">→</span></button>
       </div>
     </div>
   </section>
@@ -219,21 +275,25 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 2
           <h3>Daily finder</h3>
           <p>Watches listings, leads or postings, keeps only what fits your rules, and skips anything it has already shown you.</p>
           <dl class="io"><dt>Runs</dt><dd>Every morning</dd><dt>You get</dt><dd>A short email with links</dd></dl>
+          <button type="button" class="flow-btn" data-flow="finder">See the workflow <span aria-hidden="true">→</span></button>
         </article>
         <article class="agent">
           <h3>Inbox and document triage</h3>
           <p>Reads what comes in, labels and files it, and pulls the key fields from invoices, forms and PDFs into a sheet.</p>
           <dl class="io"><dt>Runs</dt><dd>When mail or a file arrives</dd><dt>You get</dt><dd>A sorted inbox and a clean sheet</dd></dl>
+          <button type="button" class="flow-btn" data-flow="triage">See the workflow <span aria-hidden="true">→</span></button>
         </article>
         <article class="agent">
           <h3>Product catalog cleanup</h3>
           <p>Checks supplier product files for missing specs, duplicates and odd prices before they reach your store or catalog. Built on six years running a manufacturer catalog platform.</p>
           <dl class="io"><dt>Runs</dt><dd>When a supplier file lands</dd><dt>You get</dt><dd>A clean file and a short list to review</dd></dl>
+          <button type="button" class="flow-btn" data-flow="catalog">See the workflow <span aria-hidden="true">→</span></button>
         </article>
         <article class="agent">
           <h3>Quote builder</h3>
           <p>Takes a customer's request, checks price and stock across your distributors, and drafts the quote for you to send. Built on work on real-time pricing links to 20+ IT distributors.</p>
           <dl class="io"><dt>Runs</dt><dd>When a quote request comes in</dd><dt>You get</dt><dd>A draft quote with the best source per line</dd></dl>
+          <button type="button" class="flow-btn" data-flow="quote">See the workflow <span aria-hidden="true">→</span></button>
         </article>
       </div>
     </div>
@@ -296,6 +356,196 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 2
 <footer>
   <div class="wrap"><span>© 2026 Vilar Consulting</span><span>San Clemente, California</span></div>
 </footer>
+
+<dialog class="flow" id="flow" aria-labelledby="flow-title">
+  <div class="flow-in">
+    <header class="flow-head">
+      <span class="flow-num" id="flow-num" aria-hidden="true">1</span>
+      <div>
+        <span class="label" id="flow-kicker">How it works</span>
+        <h2 id="flow-title">Workflow</h2>
+        <p id="flow-sub"></p>
+      </div>
+      <button type="button" class="flow-x" id="flow-x" aria-label="Close">×</button>
+    </header>
+    <div id="flow-svg"></div>
+    <ol class="flow-tiles" id="flow-tiles"></ol>
+  </div>
+</dialog>
+
+<script>
+(() => {
+  // One entry per clickable card. Words only: no vendor names, rule values or prices (Rich, 2026-09-26).
+  const FLOWS = {
+    car: {
+      n:1, kicker:"Daily finder, real example",
+      title:"Used-Car Shortlist", sub:"The agent does the searching. The buyer does the pricing.",
+      trigger:["Schedule",["Every morning"],"clock"],
+      source:["Listings Feed",["Licensed dealer and","private listings"],"search"],
+      rules:["Buyer's Rules",["Make, years, miles,","distance, price"],"sliders"],
+      agent:["Car-Finder Agent",["Reads every new car,","applies the rules"]],
+      memory:["Spreadsheet",["Every car checked,","no repeats"],"table"],
+      output:["Morning Email",["Cars that fit, with","VIN and link"],"mail"],
+      you:["The Buyer",["Opens each link,","makes the call"],"person"],
+      a:{start:"Starts the run",feed:"New listings",rules:"Filters",save:"Save",check:"Seen?",out:"Cars that fit",deliver:"Reads it",fb:["Tunes the","rules weekly"]},
+      tiles:[["Search done by 6 am","The overnight search is already finished."],["Never the same car twice","The spreadsheet remembers every listing."],["The buyer decides","The agent sends a list. It never contacts a seller."],["Rules get sharper","Feedback tunes the filter."]],
+    },
+    finder: {
+      n:1, kicker:"How it works",
+      title:"Daily Finder", sub:"It reads everything new. You only see what fits.",
+      trigger:["Schedule",["Every morning"],"clock"],
+      source:["Your Sources",["Listings, leads","or job posts"],"search"],
+      rules:["Your Rules",["What fits and","what to skip"],"sliders"],
+      agent:["Finder Agent",["Checks each new item","against your rules"]],
+      memory:["Seen List",["Everything it has","already shown you"],"table"],
+      output:["Short Email",["New matches only,","with links"],"mail"],
+      you:["You",["Open the links, decide","what to act on"],"person"],
+      a:{start:"Starts the run",feed:"New items",rules:"Filters",save:"Save",check:"Seen?",out:"Matches",deliver:"Reads it",fb:["Tell it what","it got wrong"]},
+      tiles:[["A short list, not a feed","Only matches reach your inbox."],["Nothing shows up twice","The seen list blocks repeats."],["You keep the decision","It shortlists. You choose."],["Better every week","Your feedback sharpens the rules."]],
+    },
+    triage: {
+      n:2, kicker:"How it works",
+      title:"Inbox and Document Triage", sub:"Every email and file gets sorted. The numbers land in a sheet.",
+      trigger:["New Arrival",["An email or file","comes in"],"bolt"],
+      source:["Inbox and Folders",["Invoices, forms","and PDFs"],"inbox"],
+      rules:["Filing Rules",["Labels, folders,","fields to pull"],"sliders"],
+      agent:["Triage Agent",["Reads it, files it,","pulls the key fields"]],
+      memory:["Your Sheet",["One row per","document"],"table"],
+      output:["Sorted Inbox",["Labeled and filed"],"check"],
+      flag:["Needs a Look",["Anything it could","not read clearly"],"alert"],
+      you:["You",["Check the flagged","items only"],"person"],
+      a:{start:"Triggers it",feed:"New item",rules:"Rules",save:"Add row",check:"Repeat?",out:"Filed",flag:"Unsure",deliver:"Glance",flagDeliver:"You check",fb:["Your fixes update","the rules"]},
+      tiles:[["No retyping","Fields come out of the PDF for you."],["Nothing gets lost","Every file is labeled and logged."],["Unsure goes to you","It flags what it cannot read."],["Rules in plain English","You can read them and change them."]],
+    },
+    catalog: {
+      n:3, kicker:"How it works",
+      title:"Product Catalog Cleanup", sub:"Bad supplier data gets caught before customers see it.",
+      trigger:["Supplier File",["New products","or prices arrive"],"file"],
+      source:["Your Catalog",["What is live in","your store today"],"box"],
+      rules:["Your Standards",["Required specs,","price ranges, naming"],"sliders"],
+      agent:["Catalog Agent",["Checks every row","against your standards"]],
+      memory:["Check Log",["Every row checked,","and why"],"table"],
+      output:["Clean File",["Rows that passed,","ready to load"],"check"],
+      flag:["Review List",["Missing specs,","duplicates, odd prices"],"alert"],
+      you:["You",["Fix the short list,","load the file"],"person"],
+      a:{start:"Starts the check",feed:"Compare",rules:"Standards",save:"Log",check:"History",out:"Passed",flag:"Problems",deliver:"Load it",flagDeliver:"Fix these",fb:["New rules from","your fixes"]},
+      tiles:[["Caught before customers","Bad rows stop at the review list."],["Duplicates found","Matched against what you already carry."],["Fix a list, not a file","You only touch the rows that failed."],["Your standards","Written in plain language, changed anytime."]],
+    },
+    quote: {
+      n:4, kicker:"How it works",
+      title:"Quote Builder", sub:"The pricing legwork is done. You review and send.",
+      trigger:["Quote Request",["Email or form","from a customer"],"mail"],
+      source:["Distributor Feeds",["Price and stock,","official connections"],"truck"],
+      rules:["Pricing Rules",["Markup and","preferred sources"],"sliders"],
+      agent:["Quote Agent",["Checks each line,","picks the best source"]],
+      memory:["Quote History",["Past quotes and","customer terms"],"db"],
+      output:["Draft Quote",["Best source","per line"],"doc"],
+      flag:["Needs a Look",["Out of stock","or no match"],"alert"],
+      you:["You",["Review, adjust,","send"],"person"],
+      a:{start:"Starts it",feed:"Price, stock",rules:"Markup",save:"Save",check:"Terms",out:"Draft",flag:"No match",deliver:"Review",flagDeliver:"Decide",fb:["Adjust markup","or sources"]},
+      tiles:[["Every line priced","Price and stock checked per distributor."],["You send, not the agent","Nothing reaches the customer without you."],["Gaps come to you","Out-of-stock lines are flagged."],["Your margin every time","Markup rules apply to each line."]],
+    },
+  };
+
+  // Colour = role: blue input/you, lavender agent, green tools/output, yellow rules/memory, pink needs a person.
+  const ROLE = {input:"blue", agent:"lav", tool:"green", memory:"yellow", stop:"pink"};
+  // 24px line icons. F = the node's own fill, K = ink.
+  const ICON = {
+    clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+    search:'<circle cx="11" cy="11" r="7"/><path d="M16 16l5 5"/>',
+    sliders:'<path d="M4 6h16M4 12h16M4 18h16"/><circle cx="9" cy="6" r="2" fill="F"/><circle cx="15" cy="12" r="2" fill="F"/><circle cx="7" cy="18" r="2" fill="F"/>',
+    bot:'<rect x="4" y="8" width="16" height="11" rx="4"/><circle cx="9" cy="13.5" r="1.3" fill="K"/><circle cx="15" cy="13.5" r="1.3" fill="K"/><path d="M12 8V5.5"/><circle cx="12" cy="4.3" r="1.2"/>',
+    table:'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18M3 14.5h18M9 5v14"/>',
+    mail:'<rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 7.5l9 6 9-6"/>',
+    person:'<circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/>',
+    inbox:'<path d="M3 13h5l1.5 3h5l1.5-3h5"/><path d="M5.5 5h13L21 13v6H3v-6z"/>',
+    file:'<path d="M6 3h8l5 5v13H6z"/><path d="M14 3v5h5M9 13h7M9 17h5"/>',
+    alert:'<path d="M12 4L2.5 20h19z"/><path d="M12 10v4"/><circle cx="12" cy="17" r=".9" fill="K"/>',
+    box:'<path d="M3 7.5L12 3l9 4.5v9L12 21l-9-4.5z"/><path d="M3 7.5L12 12l9-4.5M12 12v9"/>',
+    db:'<ellipse cx="12" cy="6" rx="7" ry="2.5"/><path d="M5 6v12c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5V6"/><path d="M5 12c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5"/>',
+    truck:'<path d="M3 6h11v10H3z"/><path d="M14 10h4l3 3v3h-7"/><circle cx="7" cy="18" r="1.8" fill="F"/><circle cx="17" cy="18" r="1.8" fill="F"/>',
+    bolt:'<path d="M13 3L5 13h6l-1 8 8-10h-6z"/>',
+    doc:'<rect x="6" y="3" width="12" height="18" rx="1.5"/><path d="M9 8h6M9 12h6M9 16h3"/>',
+    check:'<circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.8 2.8L16.5 9.5"/>',
+  };
+  const esc = s => String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/"/g,"&quot;");
+
+  // Phone view drops descriptors and arrow labels, so long box names wrap to two larger lines.
+  function split(label){
+    if (label.length <= 10 || !label.includes(" ")) return [label];
+    const w = label.split(" "); let best = null;
+    for (let i = 1; i < w.length; i++){
+      const a = w.slice(0,i).join(" "), b = w.slice(i).join(" "), d = Math.max(a.length,b.length);
+      if (!best || d < best[0]) best = [d,a,b];
+    }
+    return best.slice(1);
+  }
+
+  function node(x,y,w,h,role,[label,desc,icon],big){
+    const c = ROLE[role], fill = `var(--wf-${c})`, cx = x+w/2, s = big?1.5:1.05, iw = 24*s;
+    const ly = y+(big?74:50);
+    let t = `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="14" fill="${fill}" stroke="var(--wf-${c}-b)" stroke-width="1.5"/>`;
+    t += `<g transform="translate(${cx-iw/2},${y+(big?14:9)}) scale(${s})" fill="none" stroke="var(--wf-ink)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">${ICON[big?"bot":icon].replace(/"F"/g,`"${fill}"`).replace(/"K"/g,'"var(--wf-ink)"')}</g>`;
+    t += `<text x="${cx}" y="${ly}" text-anchor="middle" class="lbl wide${big?" big":""}">${esc(label)}</text>`;
+    desc.forEach((d,i) => { t += `<text x="${cx}" y="${ly+(big?19:16)+i*13.5}" text-anchor="middle" class="dsc">${esc(d)}</text>`; });
+    const lines = split(label), step = big?26:23, top = big ? y+84 : y+(lines.length>1?58:68);
+    lines.forEach((l,i) => { t += `<text x="${cx}" y="${top+i*step}" text-anchor="middle" class="lbl narrow${big?" big":""}">${esc(l)}</text>`; });
+    return t;
+  }
+  function arrow(d,label,lx,ly,anchor="start",dashed=false){
+    let t = `<path d="${d}" fill="none" stroke="var(--wf-arrow)" stroke-width="1.5" marker-end="url(#wf-ah)"${dashed?' stroke-dasharray="5 4"':""}/>`;
+    [].concat(label).forEach((l,i) => { t += `<text x="${lx}" y="${ly+i*14}" text-anchor="${anchor}" class="arr">${esc(l)}</text>`; });
+    return t;
+  }
+
+  function diagram(f){
+    const a = f.a, flag = !!f.flag;
+    const summary = `${f.trigger[0]} starts the ${f.agent[0]}. It reads ${f.source[0]}, applies ${f.rules[0]}, and records in ${f.memory[0]}. Results go to ${f.output[0]}${flag?`, anything it is unsure of goes to ${f.flag[0]},`:""} and then to ${f.you[0]}, whose feedback updates the rules.`;
+    let s = `<svg class="wf" viewBox="12 118 616 576" role="img" aria-label="${esc(summary)}" xmlns="http://www.w3.org/2000/svg">`;
+    s += `<defs><marker id="wf-ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="var(--wf-arrow)"/></marker></defs>`;
+    s += node(24,130,160,92,"input",f.trigger);
+    s += node(240,130,160,92,"tool",f.source);
+    s += node(24,284,160,92,"memory",f.rules);
+    s += node(230,268,180,124,"agent",f.agent,true);
+    s += node(456,284,160,92,"memory",f.memory);
+    s += node(240,440,160,92,"tool",f.output);
+    if (flag) s += node(456,440,160,92,"stop",f.flag);
+    s += node(240,590,160,92,"input",f.you);
+    s += arrow("M104 222V248H262V266",a.start,112,242);
+    s += arrow("M320 222V266",a.feed,328,250);
+    s += arrow("M184 330H228",a.rules,206,322,"middle");
+    s += arrow("M412 318H454",a.save,433,310,"middle");
+    s += arrow("M454 342H412",a.check,433,358,"middle");
+    s += flag ? arrow("M300 392V438",a.out,292,420,"end") : arrow("M320 392V438",a.out,328,420);
+    if (flag){
+      s += arrow("M396 392V414H536V438",a.flag,470,408,"middle");
+      s += arrow("M536 532V636H402",a.flagDeliver,544,590);
+    }
+    s += arrow("M320 532V588",a.deliver,328,566);
+    s += arrow("M240 636H104V378",a.fb,112,500,"start",true);
+    return s + "</svg>";
+  }
+
+  const dlg = document.getElementById("flow");
+  if (!dlg || typeof dlg.showModal !== "function") return;   // very old browsers: cards stay plain text
+  const $ = id => document.getElementById(id);
+
+  function open(key){
+    const f = FLOWS[key]; if (!f) return;
+    $("flow-num").textContent = f.n;
+    $("flow-kicker").textContent = f.kicker;
+    $("flow-title").textContent = f.title;
+    $("flow-sub").textContent = f.sub;
+    $("flow-svg").innerHTML = diagram(f);
+    $("flow-tiles").innerHTML = f.tiles.map(([h,t]) => `<li><strong>${esc(h)}</strong><span>${esc(t)}</span></li>`).join("");
+    dlg.showModal();
+    dlg.scrollTop = 0;
+  }
+  document.querySelectorAll("[data-flow]").forEach(b => b.addEventListener("click", () => open(b.dataset.flow)));
+  $("flow-x").addEventListener("click", () => dlg.close());
+  dlg.addEventListener("click", e => { if (e.target === dlg) dlg.close(); });
+})();
+</script>
 
 </body>
 </html>
