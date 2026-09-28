@@ -96,6 +96,9 @@ nav .nav-cta{color:var(--ink);font-weight:600}
 .vin{font:400 12px/1.5 var(--mono);color:var(--muted);text-align:right;letter-spacing:.04em}
 .vin i{font-style:normal;color:var(--accent)}
 .out-note{font-size:13.5px;color:var(--brand-sub);margin-top:12px}
+.demo-head{display:flex;flex-direction:column;gap:8px;margin-bottom:18px}
+.demo-head h2{font-weight:700;font-size:21px;line-height:1.25;color:var(--brand-ink)}
+.demo-head p{font-size:15.5px;line-height:1.5;color:var(--brand-sub)}
 
 /* sections */
 main section{padding-block:80px}
@@ -111,7 +114,6 @@ main section{padding-block:80px}
 .agent{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:26px;display:flex;flex-direction:column;gap:14px}
 .agent h3{font-weight:700;font-size:21px;line-height:1.2}
 .agent-top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 12px}
-.live{font:500 10.5px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--accent);background:var(--accent-soft);border-radius:3px;padding:6px 8px}
 .agent p{color:var(--muted);font-size:16px}
 .io{display:grid;grid-template-columns:auto 1fr;gap:8px 16px;margin:4px 0 0;padding-top:14px;border-top:1px solid var(--line);font-size:14.5px}
 .io dt{font:500 11px/1.9 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
@@ -247,19 +249,23 @@ body:has(dialog[open]){overflow:hidden}
         </div>
       </div>
       <div class="demo">
+        <div class="demo-head">
+          <span class="label">Example</span>
+          <h2>A morning email from a car-finder agent</h2>
+          <p>It reads every new listing overnight and sends only the cars that match the buyer's rules.</p>
+        </div>
         <div class="out" aria-label="Example of an agent's morning email">
           <div class="out-head">
             <div>
               <div class="out-from">Your agent · 6:00 am</div>
               <div class="out-subj">3 cars fit your rules today</div>
             </div>
-            <span class="tag">Example</span>
           </div>
           <div class="row"><b>2017 Toyota Tacoma SR5</b><span class="price">$22,900</span><span class="meta">96,400 mi · Dealer · 38 mi away</span><span class="vin">VIN <i>3TMCZ5AN</i>•••••</span></div>
           <div class="row"><b>2016 Honda Pilot EX-L</b><span class="price">$17,450</span><span class="meta">88,150 mi · Private seller · 12 mi</span><span class="vin">VIN <i>5FNYF6H5</i>•••••</span></div>
           <div class="row"><b>2018 Ford F-150 XLT</b><span class="price">$21,800</span><span class="meta">102,300 mi · Dealer · 54 mi away</span><span class="vin">VIN <i>1FTEW1EP</i>•••••</span></div>
         </div>
-        <p class="out-note">A used-car buyer's daily shortlist. The agent reads every new listing overnight and sends only the ones that match the buyer's rules. Sample listings.</p>
+        <p class="out-note">Sample listings, not real cars.</p>
         <button type="button" class="flow-btn" data-flow="car">See how this agent works <span aria-hidden="true">→</span></button>
       </div>
     </div>
@@ -274,13 +280,13 @@ body:has(dialog[open]){overflow:hidden}
       </div>
       <div class="agents">
         <article class="agent">
-          <div class="agent-top"><h3>Chief of staff</h3><span class="live">Running today</span></div>
+          <div class="agent-top"><h3>Chief of staff</h3></div>
           <p>Starts each day with a one-page brief: today's meetings, overdue items, and who owes you what. It tracks commitments from each meeting and drafts replies for your approval. I use one for my own work every day.</p>
           <dl class="io"><dt>Runs</dt><dd>Every morning</dd><dt>You get</dt><dd>A one-page brief and draft replies</dd></dl>
           <button type="button" class="flow-btn" data-flow="cos">See the workflow <span aria-hidden="true">→</span></button>
         </article>
         <article class="agent">
-          <div class="agent-top"><h3>Job search agent</h3><span class="live">Running today</span></div>
+          <div class="agent-top"><h3>Job search agent</h3></div>
           <p>Reviews new job postings, scores each one against your resume, and highlights the gaps. When you choose a role, it drafts a tailored resume for your review. You submit every application yourself.</p>
           <dl class="io"><dt>Runs</dt><dd>Three mornings a week</dd><dt>You get</dt><dd>A shortlist with fit scores</dd></dl>
           <button type="button" class="flow-btn" data-flow="job">See the workflow <span aria-hidden="true">→</span></button>
